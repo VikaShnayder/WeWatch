@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/WeWatch/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.2595" />
         <entry key="..\:/WeWatch/app/src/main/res/layout/activity_main.xml" value="0.253125" />
+        <entry key="..\:/WeWatch/app/src/main/res/layout/list_item_film.xml" value="0.4" />
       </map>
     </option>
   </component>
