@@ -8,13 +8,16 @@
     android:layout_marginVertical="5dp">
 
     <ImageView
+        android:contentDescription="@string/desc"
         android:id="@+id/imageView"
         android:layout_width="120dp"
+        android:layout_height="120dp"
         android:padding="5dp"
         android:src="@drawable/ic_baseline_image_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+       />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -32,9 +35,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:text="название фильма"
+            android:text="@string/title_film"
             android:padding="5dp"
-            android:textSize="18dp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/textView2"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints"
@@ -45,9 +48,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:text="название фильма"
+            android:text="@string/year_film"
             android:padding="5dp"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@+id/textView2"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints"
