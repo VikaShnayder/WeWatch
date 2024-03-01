@@ -9,7 +9,7 @@
 
     <ImageView
         android:contentDescription="@string/desc"
-        android:id="@+id/imageView"
+        android:id="@+id/image_film"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:padding="5dp"
@@ -26,17 +26,17 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/checkBoxColor"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/image_film"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/title_film"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:text="@string/title_film"
             android:padding="5dp"
+            android:text="@string/title_film"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/textView2"
             app:layout_constraintTop_toTopOf="parent"
@@ -44,12 +44,12 @@
             tools:layout_editor_absoluteX="102dp" />
 
         <TextView
-            android:id="@+id/textView12"
+            android:id="@+id/year_film"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:text="@string/year_film"
             android:padding="5dp"
+            android:text="@string/year_film"
             android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@+id/textView2"
             app:layout_constraintTop_toTopOf="parent"
