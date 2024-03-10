@@ -8,8 +8,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.shnayder.android.wewatch.filmDB.Film
+import com.bumptech.glide.Glide
 
-class SearchAdapter(var list: List<Film>): RecyclerView.Adapter<SearchAdapter.FilmViewHolder>() {
+//context использую для картинки
+class SearchAdapter(var list: List<Film>,var context:Context): RecyclerView.Adapter<SearchAdapter.FilmViewHolder>() {
+    // Ссылки на виджеты в макете элемента списка
     inner class FilmViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val titleTextView: TextView = itemView.findViewById(R.id.title_film)
         val yearTextView: TextView = itemView.findViewById(R.id.year_film)
@@ -22,10 +25,12 @@ class SearchAdapter(var list: List<Film>): RecyclerView.Adapter<SearchAdapter.Fi
     }
 
     override fun onBindViewHolder(holder: FilmViewHolder, position: Int) {
-        val currentFilm = list[position]
-        holder.titleTextView.text = "${currentFilm.title}"
-        holder.yearTextView.text = "${currentFilm.year}"
-        holder.posterImageView.setImageResource(currentFilm.poster)
+        holder.titleTextView.text = list[position].Title
+        holder.yearTextView.text = list[position].Year.toString()
+
+        Glide.with(context)
+            .load(list[position].Poster) // Путь к файлу изображения
+            .into(holder.posterImageView)
     }
     override fun getItemCount(): Int {
         return list.size
