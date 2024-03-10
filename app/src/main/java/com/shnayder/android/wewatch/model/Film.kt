@@ -1,4 +1,4 @@
-package com.shnayder.android.wewatch.filmDB
+package com.shnayder.android.wewatch.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

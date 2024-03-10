@@ -3,7 +3,7 @@ package com.shnayder.android.wewatch
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.shnayder.android.wewatch.filmDB.Film
+import com.shnayder.android.wewatch.model.Film
 
 
 class MainAdapter(private val film: Film): RecyclerView.Adapter<MainAdapter.FilmViewHolder>() {

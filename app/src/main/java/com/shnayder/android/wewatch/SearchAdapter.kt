@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.shnayder.android.wewatch.filmDB.Film
+import com.shnayder.android.wewatch.model.Film
 import com.bumptech.glide.Glide
 
 //context использую для картинки
