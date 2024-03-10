@@ -3,6 +3,7 @@ package com.shnayder.android.wewatch
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
@@ -14,8 +15,10 @@ class MainActivity : AppCompatActivity(){
         val openSearchFilm = findViewById<FloatingActionButton>(R.id.open_search_film)
 
         openSearchFilm.setOnClickListener{
-            val intent = Intent(this@MainActivity, SearchActivity::class.java)
+            val intent = Intent(this@MainActivity, FindActivity::class.java)
             startActivity(intent)
         }
+
+
     }
 }

@@ -1,11 +1,21 @@
-package com.shnayder.android.wewatch.retrofit
+package com.shnayder.android.wewatch.filmDB
 
-//модель
-data class Film(
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "my_list_film")
+class Film (
+    @PrimaryKey(autoGenerate = true)
+    val ID: Int?,
+    @ColumnInfo
     val Title:String,
+    @ColumnInfo
     val Year:Int,
-    val Poster:String,
-)
+    @ColumnInfo
+    val Poster:String
+): java.io.Serializable
+
 /* {"Title":"Star Wars: Episode IV - A New Hope",
     "Year":"1977",
     "Rated":"PG",

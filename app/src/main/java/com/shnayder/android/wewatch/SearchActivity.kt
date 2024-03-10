@@ -1,13 +1,9 @@
 package com.shnayder.android.wewatch
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Toast
-import com.shnayder.android.wewatch.retrofit.Film
+import android.view.View
+import com.shnayder.android.wewatch.filmDB.Film
 import com.shnayder.android.wewatch.retrofit.FilmApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -18,51 +14,50 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class SearchActivity : AppCompatActivity() {
+    private lateinit var list: List<Film>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
-        val searchFilm = findViewById<Button>(R.id.search_film)
-        val miniSearchFilm = findViewById<ImageView>(R.id.mini_search_film)
-        val enterTitleFilm = findViewById<EditText>(R.id.enter_title_film)
-        val enterYearFilm = findViewById<EditText>(R.id.enter_year_film)
+        //перехватваем запросы body. okhttp
+        val interseptor = HttpLoggingInterceptor()
+            .setLevel(HttpLoggingInterceptor.Level.BODY)
+        val client = OkHttpClient.Builder()
+            .addInterceptor(interseptor)
+            .build()
 
-        searchFilm.setOnClickListener{
-            val title = enterTitleFilm.text.toString()
-            val year = enterYearFilm.text.toString()
-
-            if(title != "" && year!=""){
-                val intent = Intent(this@SearchActivity, AllFilmActivity::class.java)
-                intent.putExtra("title", title)
-                intent.putExtra("year", year)
-                startActivity(intent)
-            } else if(title != ""){
-                val intent = Intent(this@SearchActivity, AllFilmActivity::class.java)
-                intent.putExtra("title", title)
-                startActivity(intent)
-            } else
-                Toast.makeText(this@SearchActivity, "Для поиска введите название фильма.", Toast.LENGTH_SHORT).show()
-        }
+        //базовая инстанция
+        val retrrofit = Retrofit.Builder()
+            .baseUrl("https://www.omdbapi.com")
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 
 
 
 
 
+        //var film: Film? = null
+        lateinit var filmResponce: Film // Используется lateinit, чтобы указать, что переменная будет инициализирована позже
+        CoroutineScope(Dispatchers.Main).launch {
+            val filmApi = retrrofit.create(FilmApi::class.java)
 
+            val title : String? = intent.getStringExtra("title")
+            val year : String? = intent.getStringExtra("year")
 
+            if (title != null && year != null){
+                filmResponce = filmApi.getFilmByTitleAndYear("e451f001", title,year)
 
+                runOnUiThread {
+                    //list = filmResponce.items?: emptyList()
+                    //adapter = SearchAdapter(list,itemListener, this@SearchActivity)
+                    //recyclerView.adapter = adapter //SearchAdapter(list, itemListener, this@SearchActivity)
+                }
 
-
-
-
-        miniSearchFilm.setOnClickListener{
-            val title = enterTitleFilm.text.toString()
-            if(title != ""){
-                val intent = Intent(this@SearchActivity, AllFilmActivity::class.java)
-                intent.putExtra(title, title)
-                startActivity(intent)
-            } else
-                Toast.makeText(this@SearchActivity, "Для поиска введите название фильма.", Toast.LENGTH_SHORT).show()
+            }else if (title != null) {
+                //filmResponce = filmApi.getFilmByTitle("e451f001", title)
+                //....
+            }
         }
 
     }
