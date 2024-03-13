@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity(){
         val openSearchFilm = findViewById<FloatingActionButton>(R.id.open_search_film)
 
         openSearchFilm.setOnClickListener{
-            val intent = Intent(this@MainActivity, FindActivity::class.java)
+            val intent = Intent(this@MainActivity, AddActivity::class.java)
             startActivity(intent)
         }
 

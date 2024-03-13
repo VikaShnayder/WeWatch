@@ -12,6 +12,8 @@ GET-получить)*/
 interface FilmApi {
     @GET("/")
     suspend fun getFilmByTitle(@Query("apikey") apikey: String, @Query("s") title: String): SearchResponse
+    /*
     @GET("/")
     suspend fun getFilmByTitleAndYear(@Query("apikey") apikey: String, @Query("s") title: String, @Query("y") year: String): SearchResponse
+    */
 }

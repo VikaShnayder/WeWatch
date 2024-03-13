@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.shnayder.android.wewatch.model.Film
 
-
+/*
 class MainAdapter(private val film: Film): RecyclerView.Adapter<MainAdapter.FilmViewHolder>() {
     inner class FilmViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         /*val titleTextView: TextView = itemView.findViewById(R.id.title_film)
@@ -27,4 +27,4 @@ class MainAdapter(private val film: Film): RecyclerView.Adapter<MainAdapter.Film
     override fun getItemCount(): Int {
         //return film.size
     }
-}
+}*/

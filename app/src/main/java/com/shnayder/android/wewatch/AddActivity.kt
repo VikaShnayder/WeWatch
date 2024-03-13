@@ -1,12 +1,41 @@
 package com.shnayder.android.wewatch
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageView
+import com.shnayder.android.wewatch.retrofit.FilmApi
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class AddActivity : AppCompatActivity() {
+    private lateinit var title: String
+    private lateinit var year: String
+    private lateinit var searchFilm: ImageView
+    private lateinit var addFilm: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add)
+
+        searchFilm = findViewById(R.id.search_film)
+        addFilm = findViewById(R.id.add_film)
+
+        searchFilm.setOnClickListener{
+            title = intent.getStringExtra("title").toString()
+            year = intent.getStringExtra("year").toString()
+
+            val intent = Intent(this@AddActivity, SearchActivity::class.java)
+            intent.putExtra("title",title)
+            //intent.putExtra("year",year)
+            startActivity(intent)
+        }
+
+        addFilm.setOnClickListener{
+
+        }
     }
 }
 /*
