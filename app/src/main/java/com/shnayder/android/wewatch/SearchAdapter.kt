@@ -25,11 +25,11 @@ class SearchAdapter(var list: List<Film>,var context:Context): RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: FilmViewHolder, position: Int) {
-        holder.titleTextView.text = list[position].Title
-        holder.yearTextView.text = list[position].Year.toString()
+        holder.titleTextView.text = list[position].imdbID
+        holder.yearTextView.text = list[position].releaseDate.toString()
 
         Glide.with(context)
-            .load(list[position].Poster) // Путь к файлу изображения
+            .load(list[position].posterPath) // Путь к файлу изображения
             .into(holder.posterImageView)
     }
     override fun getItemCount(): Int {

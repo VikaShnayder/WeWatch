@@ -3,7 +3,29 @@ package com.shnayder.android.wewatch.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+
+@JsonClass(generateAdapter = true)
+data class Film(
+    //var id: String,
+    var imdbID: String,
+    @Json(name = "Title")
+    var title: String,
+    @Json(name = "Poster")
+    var posterPath: String,
+    @Json(name = "Type")
+    var overview: String,
+    @Json(name = "Year")
+    var releaseDate: String? = null,
+) {
+    fun getReleaseYearFromDate(): String? {
+        return releaseDate?.split("-")?.get(0)
+    }
+}
+
+/*
 @Entity(tableName = "my_list_film")
 class Film (
     @PrimaryKey(autoGenerate = true)
@@ -15,7 +37,7 @@ class Film (
     @ColumnInfo
     val Poster:String
 ): java.io.Serializable
-
+*/
 /* {"Title":"Star Wars: Episode IV - A New Hope",
     "Year":"1977",
     "Rated":"PG",
